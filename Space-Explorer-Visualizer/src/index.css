@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  /* Common Variables */
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Space Mono', monospace;
+  --transition-speed: 0.3s;
+
+  /* NEBULA (Night Mode) */
+  --bg-primary-night: #0B0C10;
+  --bg-secondary-night: rgba(31, 40, 51, 0.7);
+  --text-primary-night: #C5C6C7;
+  --accent-cyan-night: #66FCF1;
+  --accent-teal-night: #45A29E;
+  --accent-magenta-night: #FF007F;
+  --glass-border-night: rgba(102, 252, 241, 0.2);
+  --glass-shadow-night: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  --success-color-night: #39FF14;
+  --error-color-night: #FF003C;
+  --search-active-night: #FFE800;
+
+  /* SOLAR (Day Mode) - Eye Safe, vibrant but not blinding */
+  --bg-primary-day: #F0F4F8;
+  --bg-secondary-day: rgba(255, 255, 255, 0.8);
+  --text-primary-day: #102A43;
+  --accent-cyan-day: #0077B6;
+  --accent-teal-day: #0096C7;
+  --accent-magenta-day: #D90429;
+  --glass-border-day: rgba(0, 119, 182, 0.3);
+  --glass-shadow-day: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --success-color-day: #2B9348;
+  --error-color-day: #D00000;
+  --search-active-day: #F4A261;
+}
+
+[data-theme="night"] {
+  --bg-primary: var(--bg-primary-night);
+  --bg-secondary: var(--bg-secondary-night);
+  --text-primary: var(--text-primary-night);
+  --accent-primary: var(--accent-cyan-night);
+  --accent-secondary: var(--accent-teal-night);
+  --accent-danger: var(--accent-magenta-night);
+  --glass-border: var(--glass-border-night);
+  --glass-shadow: var(--glass-shadow-night);
+  --success-color: var(--success-color-night);
+  --error-color: var(--error-color-night);
+  --search-active: var(--search-active-night);
+  --glow-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-primary);
+  --bg-stars: url('https://www.transparenttextures.com/patterns/stardust.png');
+}
+
+[data-theme="day"] {
+  --bg-primary: var(--bg-primary-day);
+  --bg-secondary: var(--bg-secondary-day);
+  --text-primary: var(--text-primary-day);
+  --accent-primary: var(--accent-cyan-day);
+  --accent-secondary: var(--accent-teal-day);
+  --accent-danger: var(--accent-magenta-day);
+  --glass-border: var(--glass-border-day);
+  --glass-shadow: var(--glass-shadow-day);
+  --success-color: var(--success-color-day);
+  --error-color: var(--error-color-day);
+  --search-active: var(--search-active-day);
+  --glow-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --bg-stars: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  background-image: var(--bg-stars);
+  color: var(--text-primary);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  text-shadow: var(--glow-shadow);
+}
+
+.glass-panel {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all var(--transition-speed);
+}
+
+.btn-primary {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  padding: 10px 20px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+}
+
+.btn-primary:hover {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--glow-shadow);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s;
+}
+
+@keyframes laser-fire {
+  0% {
+    box-shadow: inset 0 0 10px #fff, 0 0 20px #fff;
+    background-color: #fff;
+  }
+
+  50% {
+    box-shadow: inset 0 0 50px var(--accent-danger), 0 0 100px var(--accent-danger);
+    background-color: var(--accent-danger);
+  }
+
+  100% {
+    box-shadow: inset 0 0 10px var(--accent-danger), 0 0 20px var(--accent-danger);
+    background-color: transparent;
+  }
+}
+
+.animate-laser {
+  animation: laser-fire 0.3s ease-out;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+    filter: brightness(3);
+    box-shadow: 0 0 100px var(--success-color);
+    background-color: #fff;
+  }
+
+  100% {
+    transform: scale(1.2);
+    filter: brightness(1);
+    box-shadow: 0 0 30px var(--success-color);
+  }
+}
+
+.animate-explode {
+  animation: explode 0.8s forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
