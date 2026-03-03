@@ -1,3 +1,4 @@
 ﻿# Linear-and-Bineary-Search-Simulation
-  https://straw-hats-7795d.web.app //you can view our website with this link also but remember first sign up then login.
+  In this website there are 3simulation and 2 real life problem simulation of linear search and binary search it is helful to students to understand about this d.s.a topic with easy simulation easily .
+
 
