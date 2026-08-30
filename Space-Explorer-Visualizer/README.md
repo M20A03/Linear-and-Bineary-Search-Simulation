@@ -1,0 +1,36 @@
+﻿# Space Explorer Visualizer
+A React + Python space-themed algorithm visualizer.
+
+## How to Run Locally
+
+You must run *both* the backend API and the frontend UI at the same time in two separate terminal windows.
+
+### Terminal 1: Start the Backend (Python)
+1. Open a new Terminal (or Command Prompt).
+2. Navigate to the `backend` folder:
+   ```cmd
+   cd "C:\Users\mayan\OneDrive\Desktop\C++ Model\Space-Explorer-Visualizer\backend"
+   ```
+3. Run the FastAPI server:
+   ```cmd
+   python -m uvicorn main:app --reload
+   ```
+   *You should see a message saying "Application startup complete. Uvicorn running on http://0.0.0.0:8000". Leave this window open.*
+
+### Terminal 2: Start the Frontend (React)
+1. Open a *second* new Terminal.
+2. Navigate to the main project folder:
+   ```cmd
+   cd "C:\Users\mayan\OneDrive\Desktop\C++ Model\Space-Explorer-Visualizer"
+   ```
+3. Run the Vite development server:
+   ```cmd
+   npm run dev
+   ```
+   *You should see a message saying "VITE v... ready". Leave this window open.*
+
+### View the Application
+Once both servers are running, open your web browser and go to:
+**http://localhost:5173/**
+
+

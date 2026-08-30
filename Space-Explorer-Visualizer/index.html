@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0" />
+  <meta name="theme-color" content="#0B0C10" id="meta-theme-color" />
+  <meta name="description" content="Interactive Linear & Binary Search Space Simulation Platform. Visual, gamified, accessible and responsive." />
+  <title>Space Explorer • Linear & Binary Search Simulation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+
+  <!-- ZERO-FOUC THEME INITIALIZER (Runs synchronously before DOM renders) -->
+  <script>
+    (function () {
+      try {
+        const storedTheme = localStorage.getItem('space_theme');
+        const supportDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const activeTheme = storedTheme ? storedTheme : (supportDark ? 'night' : 'day');
+        document.documentElement.setAttribute('data-theme', activeTheme);
+        const metaColor = document.getElementById('meta-theme-color');
+        if (metaColor) {
+          metaColor.setAttribute('content', activeTheme === 'night' ? '#0B0C10' : '#F0F4F8');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'night');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

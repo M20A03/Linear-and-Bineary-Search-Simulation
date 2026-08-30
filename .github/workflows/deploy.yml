@@ -1,0 +1,65 @@
+name: Production CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-build:
+    name: Code Quality & Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: Space-Explorer-Visualizer/package-lock.json
+
+      - name: Install Dependencies
+        working-directory: Space-Explorer-Visualizer
+        run: npm ci
+
+      - name: Lint
+        working-directory: Space-Explorer-Visualizer
+        run: npm run lint
+
+      - name: Build
+        working-directory: Space-Explorer-Visualizer
+        run: npm run build
+
+  deploy-firebase:
+    name: Deploy to Firebase Hosting
+    needs: lint-and-build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: Space-Explorer-Visualizer/package-lock.json
+
+      - name: Install & Build
+        working-directory: Space-Explorer-Visualizer
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: linear-and-binary-search
+          entryPoint: Space-Explorer-Visualizer
