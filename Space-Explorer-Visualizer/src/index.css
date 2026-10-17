@@ -35,33 +35,36 @@
   --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Touch Hit Target Minimum (Apple HIG & WCAG 2.5.8) */
-  --min-touch-target: 44px;
+  --min-touch-target: 48px;
 
   /* Container Width Guardrails */
   --container-max-width: 1280px;
   --prose-max-width: 75ch;
 }
 
-/* NEBULA (Night Mode) - WCAG 2.1 AA Compliant */
+/* NEBULA (Night Mode) - Deep Space & Terminal Lime */
 [data-theme="night"] {
-  --bg-primary: #0B0C10;
-  --bg-secondary: rgba(31, 40, 51, 0.75);
-  --bg-surface-elevated: rgba(19, 26, 36, 0.95);
-  --text-primary: #C5C6C7;
+  --bg-primary: #090D16;
+  --bg-secondary: rgba(18, 24, 38, 0.75);
+  --bg-surface-elevated: rgba(14, 20, 32, 0.95);
+  --text-primary: #E2E8F0;
   --text-bright: #FFFFFF;
   --text-secondary: #94A3B8;
-  --accent-primary: #66FCF1;
-  --accent-secondary: #45A29E;
-  --accent-danger: #FF007F;
-  --glass-border: rgba(102, 252, 241, 0.25);
-  --glass-border-strong: rgba(102, 252, 241, 0.6);
+  --accent-primary: #22C55E;
+  --accent-secondary: #16A34A;
+  --accent-danger: #EF4444;
+  --glass-border: rgba(34, 197, 94, 0.25);
+  --glass-border-strong: rgba(34, 197, 94, 0.6);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.85);
-  --success-color: #39FF14;
-  --error-color: #FF003C;
+  --success-color: #22C55E;
+  --error-color: #EF4444;
   --search-active: #FFE800;
   --focus-ring: #66FCF1;
   --glow-shadow: 0 0 10px rgba(102, 252, 241, 0.6), 0 0 20px rgba(102, 252, 241, 0.3);
-  --bg-stars: url('https://www.transparenttextures.com/patterns/stardust.png');
+  --bg-stars: radial-gradient(1px 1px at 25px 15px, rgba(255, 255, 255, 0.5), transparent),
+              radial-gradient(1.5px 1.5px at 75px 45px, rgba(102, 252, 241, 0.6), transparent),
+              radial-gradient(1px 1px at 145px 110px, rgba(255, 255, 255, 0.4), transparent),
+              radial-gradient(2px 2px at 190px 160px, rgba(255, 232, 0, 0.3), transparent);
 }
 
 /* SOLAR (Day Mode) - Eye Safe, vibrant high contrast */
