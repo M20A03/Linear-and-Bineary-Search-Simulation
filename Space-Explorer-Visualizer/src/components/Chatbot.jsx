@@ -126,15 +126,21 @@ const Chatbot = () => {
             setMessages((prev) => [...prev, { text: botMsg, isBot: true }]);
             playAudio('success'); // Notification sound
 
-            // Save to Firebase Realtime Database without blocking the UI
-            const chatRef = ref(database, 'chat_logs');
-            const newLogRef = push(chatRef);
-            set(newLogRef, {
-                user: localStorage.getItem('spaceUserName') || 'Anonymous',
-                userMessage: userMsg,
-                botResponse: botMsg,
-                timestamp: serverTimestamp()
-            }).catch(err => console.error("Failed to sync chat to database:", err));
+            // Save to Firebase Realtime Database without blocking the UI if available
+            if (database) {
+                try {
+                    const chatRef = ref(database, 'chat_logs');
+                    const newLogRef = push(chatRef);
+                    set(newLogRef, {
+                        user: localStorage.getItem('spaceUserName') || 'Commander',
+                        userMessage: userMsg,
+                        botResponse: botMsg,
+                        timestamp: serverTimestamp()
+                    }).catch(err => console.warn("Failed to sync chat to database:", err));
+                } catch (dbErr) {
+                    console.warn("Database sync skipped:", dbErr);
+                }
+            }
 
         } catch (err) {
             console.error("Chatbot Error:", err);

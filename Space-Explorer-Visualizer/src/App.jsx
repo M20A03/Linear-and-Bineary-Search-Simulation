@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { ThemeProvider, ThemeContext } from './context/ThemeContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { useKeyboardShortcut } from './hooks/useKeyboardShortcut';
-import Auth from './components/Auth';
 import Navbar from './components/Navbar';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
@@ -40,20 +39,14 @@ const ToastManager = () => {
     );
 };
 
-// Protected route guard with auth hydration
-const ProtectedRoute = ({ children }) => {
-    const token = localStorage.getItem('spaceToken');
-    const location = useLocation();
-
-    if (!token) {
-        const returnUrl = encodeURIComponent(location.pathname + location.search);
-        return <Navigate to={`/?returnUrl=${returnUrl}`} replace />;
-    }
-
+// Global App Layout with navigation and AI assistance (no login required)
+const AppLayout = ({ children }) => {
     return (
         <>
             <Navbar />
-            {children}
+            <main id="main-content" tabIndex={-1}>
+                {children}
+            </main>
             <Chatbot />
         </>
     );
@@ -73,7 +66,6 @@ const GlobalShortcuts = () => {
 
     const handlers = {
         onEscape: useCallback(() => {
-            // Close any open modals/drawers by dispatching custom event
             window.dispatchEvent(new CustomEvent('ui:escape'));
         }, []),
         onToggleTheme: useCallback(() => {
@@ -94,21 +86,28 @@ const App = () => {
                     <ScrollToTop />
                     <ToastManager />
                     <Routes>
-                        <Route path="/" element={<Auth />} />
+                        <Route
+                            path="/"
+                            element={
+                                <AppLayout>
+                                    <Home />
+                                </AppLayout>
+                            }
+                        />
                         <Route
                             path="/home"
                             element={
-                                <ProtectedRoute>
+                                <AppLayout>
                                     <Home />
-                                </ProtectedRoute>
+                                </AppLayout>
                             }
                         />
                         <Route
                             path="/visualizer"
                             element={
-                                <ProtectedRoute>
+                                <AppLayout>
                                     <Visualizer />
-                                </ProtectedRoute>
+                                </AppLayout>
                             }
                         />
                         <Route path="*" element={<Navigate to="/" replace />} />

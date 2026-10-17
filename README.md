@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Active_200_OK-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://linear-and-binary-search.web.app/)
-![Platform](https://img.shields.io/badge/Platform-Firebase_Hosting-0070F3?style=for-the-badge)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Active_200_OK-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://linear-and-binary-search.vercel.app/)
+![Platform](https://img.shields.io/badge/Platform-Vercel-0070F3?style=for-the-badge)
 [![Author](https://img.shields.io/badge/Author-Mayank_Raj-orange?style=for-the-badge&logo=github)](https://github.com/M20A03)
 ![Maintenance](https://img.shields.io/badge/Maintained-Yes-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)
@@ -21,9 +21,9 @@ Interactive space-themed algorithm visualizer illustrating Linear Search vs Bina
 Experience the live, active production deployment in your browser:
 
 > 🌐 **Verified Active Production Link:**  
-> **[https://linear-and-binary-search.web.app/](https://linear-and-binary-search.web.app/)**
+> **[https://linear-and-binary-search.vercel.app/](https://linear-and-binary-search.vercel.app/)**
 
-*Status:* `200 OK — Production Active & Connected`
+*Status:* `200 OK — Production Active & Connected (Vercel)`
 
 
 ---
@@ -53,7 +53,7 @@ Experience the live, active production deployment in your browser:
 | :--- | :--- |
 | **Framework / Runtime** | `React / Canvas / Space Explorer Engine` |
 | **Styling & Design System** | `Custom Cosmic Sci-Fi CSS` |
-| **Deployment & Hosting** | `Firebase Hosting` |
+| **Deployment & Hosting** | `Vercel` |
 | **Repository** | [https://github.com/M20A03/Linear-and-Bineary-Search-Simulation](https://github.com/M20A03/Linear-and-Bineary-Search-Simulation) |
 | **Author** | [Mayank Raj (@M20A03)](https://github.com/M20A03) |
 

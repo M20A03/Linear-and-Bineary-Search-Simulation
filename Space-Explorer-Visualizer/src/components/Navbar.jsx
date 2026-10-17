@@ -1,34 +1,20 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
-import { Sun, Moon, Navigation, Info, LogOut, User, Menu, X } from 'lucide-react';
-import { auth } from '../firebase';
-import { signOut } from 'firebase/auth';
+import { Sun, Moon, Navigation, Info, User, Menu, X } from 'lucide-react';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
 const Navbar = () => {
     const { theme, toggleTheme, playAudio } = useContext(ThemeContext);
     const navigate = useNavigate();
     const { isMobile } = useBreakpoint();
-    const userName = localStorage.getItem('spaceUserName');
+    const userName = localStorage.getItem('spaceUserName') || 'Commander';
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef(null);
 
     const handleNavClick = () => {
         playAudio('click');
         setMenuOpen(false);
-    };
-
-    const handleLogout = async () => {
-        playAudio('click');
-        try {
-            await signOut(auth);
-            localStorage.removeItem('spaceToken');
-            localStorage.removeItem('spaceUserName');
-            navigate('/');
-        } catch (error) {
-            console.error("Error signing out: ", error);
-        }
     };
 
     // Close menu on Escape key
@@ -111,12 +97,6 @@ const Navbar = () => {
                     {theme === 'night' ? <Sun color="#FFD700" size={20} /> : <Moon color="#102A43" size={20} />}
                 </button>
 
-                {!isMobile && (
-                    <button onClick={handleLogout} style={styles.iconBtn} title="Logout" aria-label="Logout">
-                        <LogOut size={20} color="var(--error-color)" />
-                    </button>
-                )}
-
                 {/* Mobile hamburger */}
                 {isMobile && (
                     <button
@@ -155,9 +135,6 @@ const Navbar = () => {
                         >
                             <Info size={18} /> Visualizer
                         </NavLink>
-                        <button onClick={handleLogout} style={styles.drawerLogout}>
-                            <LogOut size={18} color="var(--error-color)" /> Logout
-                        </button>
                     </div>
                 </>
             )}

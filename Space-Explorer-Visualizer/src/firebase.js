@@ -13,11 +13,17 @@ const firebaseConfig = {
     measurementId: "G-7SK9GFQ11Q"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let app = null;
+let authInstance = null;
+let databaseInstance = null;
 
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
+try {
+    app = initializeApp(firebaseConfig);
+    authInstance = getAuth(app);
+    databaseInstance = getDatabase(app);
+} catch (err) {
+    console.warn("Firebase initialization bypassed or project unreachable:", err);
+}
 
-// Initialize Realtime Database and get a reference to the service
-export const database = getDatabase(app);
+export const auth = authInstance;
+export const database = databaseInstance;

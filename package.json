@@ -1,0 +1,9 @@
+{
+  "name": "linear-and-binary-search-simulation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd Space-Explorer-Visualizer && npm run build",
+    "dev": "cd Space-Explorer-Visualizer && npm run dev"
+  }
+}

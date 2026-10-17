@@ -7,6 +7,21 @@ import { ref, push, set, serverTimestamp } from 'firebase/database';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const logSearchEvent = (algorithm, targetVal, success, energyLeft) => {
+    if (!database) return;
+    try {
+        const logRef = push(ref(database, 'search_logs'));
+        set(logRef, {
+            user: localStorage.getItem('spaceUserName') || 'Commander',
+            algorithm,
+            target: targetVal,
+            success,
+            energyRemaining: energyLeft,
+            timestamp: serverTimestamp()
+        }).catch(() => {});
+    } catch (_) {}
+};
+
 const Visualizer = () => {
     const { playAudio } = useContext(ThemeContext);
     const location = useLocation();
@@ -245,15 +260,7 @@ const Visualizer = () => {
                 setFoundIndex(i);
                 setStatusMsg(scenario === 'space' ? `TARGET DESTROYED at coordinate [${i}]!` : `MATCH FOUND at position [${i}]!`);
 
-                const logRef = push(ref(database, 'search_logs'));
-                set(logRef, {
-                    user: localStorage.getItem('spaceUserName') || 'Anonymous',
-                    algorithm: 'linear',
-                    target: val,
-                    success: true,
-                    energyRemaining: energy - energyCost,
-                    timestamp: serverTimestamp()
-                });
+                logSearchEvent('linear', val, true, energy - energyCost);
 
                 playAudio('success');
                 triggerShake();
@@ -264,15 +271,7 @@ const Visualizer = () => {
             setEnergy(0); // Instantly drop to 0 on failure
             setStatusMsg(scenario === 'space' ? `AMMO DEPLETED. Enemy escaped.` : `SEARCH FAILED. Target missing.`);
 
-            const logRef = push(ref(database, 'search_logs'));
-            set(logRef, {
-                user: localStorage.getItem('spaceUserName') || 'Anonymous',
-                algorithm: 'linear',
-                target: val,
-                success: false,
-                energyRemaining: 0,
-                timestamp: serverTimestamp()
-            });
+            logSearchEvent('linear', val, false, 0);
 
             playAudio('error');
         }
@@ -310,15 +309,7 @@ const Visualizer = () => {
                 setFoundIndex(m);
                 setStatusMsg(scenario === 'space' ? `TARGET DESTROYED at coordinate [${m}]!` : `MATCH FOUND at position [${m}]!`);
 
-                const logRef = push(ref(database, 'search_logs'));
-                set(logRef, {
-                    user: localStorage.getItem('spaceUserName') || 'Anonymous',
-                    algorithm: 'binary',
-                    target: val,
-                    success: true,
-                    energyRemaining: energy - 20,
-                    timestamp: serverTimestamp()
-                });
+                logSearchEvent('binary', val, true, energy - 20);
 
                 playAudio('success');
                 triggerShake();
@@ -343,15 +334,7 @@ const Visualizer = () => {
             setEnergy(0); // Drop to 0 on failure
             setStatusMsg(scenario === 'space' ? `TRACKING FAILED. Enemy lost.` : `SEARCH FAILED. Target missing.`);
 
-            const logRef = push(ref(database, 'search_logs'));
-            set(logRef, {
-                user: localStorage.getItem('spaceUserName') || 'Anonymous',
-                algorithm: 'binary',
-                target: val,
-                success: false,
-                energyRemaining: 0,
-                timestamp: serverTimestamp()
-            });
+            logSearchEvent('binary', val, false, 0);
 
             playAudio('error');
         }

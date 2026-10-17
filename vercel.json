@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd Space-Explorer-Visualizer && npm install && npm run build",
+  "outputDirectory": "Space-Explorer-Visualizer/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
