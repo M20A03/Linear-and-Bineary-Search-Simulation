@@ -114,7 +114,11 @@ const Visualizer = () => {
             if (algo === 'binary') {
                 setStatusMsg(`ATTENDANCE: Teacher sorted the list for ${algo.toUpperCase()} SEARCH!`);
             }
-            setTarget('');
+        }
+
+        if (newArr.length > 0) {
+            const randomPick = newArr[Math.floor(Math.random() * newArr.length)];
+            setTarget(String(scenario === 'attendance' ? randomPick.compare : randomPick.display));
         }
 
         setArray(newArr);
@@ -481,7 +485,18 @@ const Visualizer = () => {
                 {array.map((item, idx) => {
                     const isStr = typeof item.display === 'string' && !item.display.startsWith('Roll');
                     return (
-                        <div key={idx} style={styles.barContainer}>
+                        <div
+                            key={idx}
+                            style={{ ...styles.barContainer, cursor: isRunningState ? 'default' : 'pointer' }}
+                            onClick={() => {
+                                if (!isRunningState) {
+                                    playAudio('click');
+                                    setTarget(String(scenario === 'attendance' ? item.compare : item.display));
+                                    setStatusMsg(`COORDINATES LOCKED: Target set to ${item.display}`);
+                                }
+                            }}
+                            title={`Click to set target to ${item.display}`}
+                        >
                             <span style={{ ...styles.valText, fontSize: (scenario === 'contacts' || isStr) ? '0.7rem' : '0.9rem', writingMode: (scenario === 'contacts' || isStr) ? 'vertical-rl' : 'horizontal-tb', transform: (scenario === 'contacts' || isStr) ? 'rotate(180deg)' : 'none', marginBottom: (scenario === 'contacts' || isStr) ? '5px' : '10px' }}>{item.display}</span>
                             <div
                                 className={getBarClass(idx)}
