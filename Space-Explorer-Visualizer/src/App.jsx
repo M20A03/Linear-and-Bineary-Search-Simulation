@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import Visualizer from './components/Visualizer';
+import SpaceBackground from './components/SpaceBackground';
 import './index.css';
 
 // Toast notification listener component
@@ -43,8 +44,9 @@ const ToastManager = () => {
 const AppLayout = ({ children }) => {
     return (
         <>
+            <SpaceBackground />
             <Navbar />
-            <main id="main-content" tabIndex={-1}>
+            <main id="main-content" tabIndex={-1} style={{ position: 'relative', zIndex: 1 }}>
                 {children}
             </main>
             <Chatbot />
