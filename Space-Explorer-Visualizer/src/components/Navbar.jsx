@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import { Sun, Moon, Navigation, Info, User, Menu, X } from 'lucide-react';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
 const Navbar = () => {
     const { theme, toggleTheme, playAudio } = useContext(ThemeContext);
-    const navigate = useNavigate();
     const { isMobile } = useBreakpoint();
     const userName = localStorage.getItem('spaceUserName') || 'Commander';
     const [menuOpen, setMenuOpen] = useState(false);

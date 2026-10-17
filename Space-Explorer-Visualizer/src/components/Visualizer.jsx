@@ -19,7 +19,9 @@ const logSearchEvent = (algorithm, targetVal, success, energyLeft) => {
             energyRemaining: energyLeft,
             timestamp: serverTimestamp()
         }).catch(() => {});
-    } catch (_) {}
+    } catch {
+        // Safe fallback
+    }
 };
 
 const Visualizer = () => {
