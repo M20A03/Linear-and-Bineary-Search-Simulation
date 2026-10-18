@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "linear-and-binary-search"
-  }
+  },
+  "targets": {
+    "react4-eb851": {
+      "hosting": {
+        "search-simulation": [
+          "search-simulation-algo"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

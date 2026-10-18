@@ -6,6 +6,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
+    "target": "search-simulation",
     "public": "dist",
     "ignore": [
       "firebase.json",
