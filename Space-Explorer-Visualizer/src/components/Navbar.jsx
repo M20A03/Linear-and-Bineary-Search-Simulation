@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import { Sun, Moon, Navigation, Info, User, Menu, X } from 'lucide-react';
 import { useBreakpoint } from '../hooks/useBreakpoint';
@@ -10,10 +10,18 @@ const Navbar = () => {
     const userName = localStorage.getItem('spaceUserName') || 'Commander';
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef(null);
+    const location = useLocation();
+
+    // Auto-close menu on route changes
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location.pathname]);
 
     const handleNavClick = () => {
-        playAudio('click');
-        setMenuOpen(false);
+        try { playAudio('click'); } catch (_) {}
+        setTimeout(() => {
+            setMenuOpen(false);
+        }, 100);
     };
 
     // Close menu on Escape key
@@ -54,10 +62,10 @@ const Navbar = () => {
 
     return (
         <nav className="glass-panel" style={styles.nav} ref={menuRef}>
-            <div style={styles.logo}>
+            <NavLink to="/home" style={{ ...styles.logo, textDecoration: 'none' }} onClick={() => setMenuOpen(false)} aria-label="Space Explorer Home">
                 <img src="/logo.png" alt="Space Explorer Logo" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
                 {!isMobile && <span style={styles.logoText}>Space Explorer</span>}
-            </div>
+            </NavLink>
 
             {/* Desktop Links */}
             {!isMobile && (
