@@ -1,4 +1,4 @@
-# Space Explorer Search Visualizer — Algorithm Simulation
+# Space Explorer Search Visualizer: Algorithm Simulation
 
 <div align="center">
 
@@ -6,66 +6,68 @@
 ![Platform](https://img.shields.io/badge/Platform-Vercel-0070F3?style=for-the-badge)
 [![Author](https://img.shields.io/badge/Author-Mayank_Raj-orange?style=for-the-badge&logo=github)](https://github.com/M20A03)
 ![Maintenance](https://img.shields.io/badge/Maintained-Yes-success?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 </div>
 
 ---
 
-## 📖 Overview
+## Overview
 
 Interactive space-themed algorithm visualizer illustrating Linear Search vs Binary Search complexities (O(N) vs O(log N)) through dynamic planetary animations.
 
-## 🚀 Live Demo & Production URL
+## Live Demo and Production URL
 
 Experience the live, active production deployment in your browser:
 
-> 🌐 **Verified Active Production Link:**  
-> **[https://linear-and-binary-search.vercel.app/](https://linear-and-binary-search.vercel.app/)**
+> **Verified Active Production Link (Vercel):**  
+> **[https://linear-and-binary-search.vercel.app/](https://linear-and-binary-search.vercel.app/)**  
+> 
+> **Firebase Hosting Mirror:**  
+> **[https://search-simulation-algo.web.app/](https://search-simulation-algo.web.app/)**
 
-*Status:* `200 OK — Production Active & Connected (Vercel)`
-
-
----
-
-## ✨ Key Features
-
-- **Cosmic planet radar visualization comparing Linear and Binary Search execution in real time**
-- **Interactive step-by-step playback with speed regulation (0.25x to 4x) and pause/resume**
-- **Dynamic pointer inspection tracking `low`, `mid`, and `high` indices during Binary Search**
-- **Comparison metrics tracker recording step count, comparisons, and time complexity curves**
-- **Comprehensive Python simulation engine (`search_visualizer.py`) included for CLI analysis**
+*Status:* `200 OK: Production Active & Connected`
 
 ---
 
-## 📱 2026 Spatial Web & Mobile Viewport Specifications
+## Key Features
+
+- **Cosmic planet radar visualization:** Comparing Linear and Binary Search execution in real time.
+- **Interactive step-by-step playback:** Regulate playback speed (0.25x to 4x) with pause/resume controls.
+- **Dynamic pointer inspection:** Tracks low, mid, and high indices during Binary Search.
+- **Comparison metrics tracker:** Records step count, comparisons, and time complexity curves.
+- **Python simulation engine:** Includes `search_visualizer.py` for terminal and CLI analysis.
+
+---
+
+## Spatial Web and Mobile Viewport Specifications
 
 - **Precision Viewport Scaling:** Responsive canvas scaling adjusting dynamically for mobile touchscreens and desktop screens alike.
-- **Touch Ergonomics:** Enforces standard 48px minimum interactive tap boundaries across all buttons, inputs, and navigation drawers.
+- **Touch Ergonomics:** Standard 48px minimum interactive tap boundaries across all buttons and inputs.
 - **Hardware Acceleration:** Zero image-layout shifts, GPU-accelerated micro-animations, and fluid 60fps transitions.
-- **Notch & Safe Area Compliance:** Dynamic insets utilizing `padding-bottom: max(16px, env(safe-area-inset-bottom))`.
+- **Safe Area Compliance:** Dynamic padding for notched and edge-to-edge mobile devices.
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack and Architecture
 
 | Layer | Technology |
 | :--- | :--- |
 | **Framework / Runtime** | `React / Canvas / Space Explorer Engine` |
-| **Styling & Design System** | `Custom Cosmic Sci-Fi CSS` |
-| **Deployment & Hosting** | `Vercel` |
+| **Styling & Design** | `Custom Cosmic Sci-Fi Theme` |
+| **Deployment & Hosting** | `Vercel & Firebase Hosting` |
 | **Repository** | [https://github.com/M20A03/Linear-and-Bineary-Search-Simulation](https://github.com/M20A03/Linear-and-Bineary-Search-Simulation) |
 | **Author** | [Mayank Raj (@M20A03)](https://github.com/M20A03) |
 
 ---
 
-## 💻 Getting Started Locally
+## Getting Started Locally
 
 ### Prerequisites
-- Node.js (v18.0.0 or higher) / Python 3.10+ (where applicable)
+- Node.js (v18.0.0 or higher) / Python 3.10+
 - Git installed on your system
 
-### Installation & Run
+### Installation and Run
 
 ```bash
 git clone https://github.com/M20A03/Linear-and-Bineary-Search-Simulation.git
@@ -76,7 +78,7 @@ npm run dev
 
 ---
 
-## 👤 Author & Maintainer
+## Author and Maintainer
 
 **Mayank Raj**  
 - **GitHub:** [@M20A03](https://github.com/M20A03)
@@ -85,5 +87,5 @@ npm run dev
 ---
 
 <div align="center">
-<sub>Crafted with precision • Production-Ready • 2026 Spatial Experience</sub>
+<sub>Crafted with precision • Production-Ready</sub>
 </div>
